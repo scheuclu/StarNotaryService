@@ -82,8 +82,10 @@ it('can add the star name and star symbol properly', async() => {
     let newTokenId = 6;
     await instance.createStar('Even more awesome Star!', newTokenId, {from: accounts[0]});
     let star = await instance.lookUptokenIdToStarInfo(newTokenId);
-    assert.equal(star, "Even more awesome Star!");
-    //TODO(lukas)
+    let name = await instance.name();
+    let symbol = await instance.symbol();
+    assert.equal(name, "Lukas Stars");
+    assert.equal(symbol, "LKS");
 });
 
 it('lets 2 users exchange stars', async() => {
